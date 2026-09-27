@@ -13,7 +13,7 @@
   "bugs": {
     "url": "https://github.com/mintblocks/api/issues"
   },
-  "homepage": "https://mintblocks.github.io",
+  "homepage": "https://mb.jimhasaburger.com/",
   "dependencies": {
     "pm2": "latest",
     "express": "latest"
