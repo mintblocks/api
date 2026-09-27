@@ -1,0 +1,19 @@
+name: run
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  run-app:
+    runs-on: self-hosted 
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: get node.js stuff
+        run: npm install
+
+      - name: start
+        run: npm run run2

@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "author": "Mintblocks",
   "scripts": {
-    "run": "node index.js"
+    "run": "node index.js",
+    "run2": "npx pm2 start index.js --name 'api' || npx pm2 restart 'api'"
   },
   "repository": {
     "type": "git",
@@ -12,5 +13,8 @@
   "bugs": {
     "url": "https://github.com/mintblocks/api/issues"
   },
-  "homepage": "https://mintblocks.github.io"
+  "homepage": "https://mintblocks.github.io",
+  "dependencies": {
+    "pm2": "^5.4.3"
+  }
 }
