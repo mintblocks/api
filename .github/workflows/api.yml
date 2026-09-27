@@ -15,8 +15,9 @@ jobs:
       - name: npm install
         run: npm install
 
-      - name: start
-        shell: bash
-        run: |
-          npx pm2 delete api || true
-          npx pm2 start index.js --name "api"
+      - name: stop existing pm2 process
+        run: npx pm2 delete webpage
+        continue-on-error: true
+
+      - name: run
+        run: npx pm2 start index.js --name "api"
