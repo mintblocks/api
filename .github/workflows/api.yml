@@ -16,7 +16,7 @@ jobs:
         run: npm install
 
       - name: stop existing pm2 process
-        run: npx pm2 delete webpage
+        run: npx pm2 delete api
         continue-on-error: true
 
       - name: run
