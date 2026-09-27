@@ -1,0 +1,21 @@
+name: api
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  run-api:
+    runs-on: self-hosted
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: npm install
+        run: npm install
+
+      - name: start
+        run: |
+          npx pm2 delete api || true
+          npx pm2 start index.js --name "api"

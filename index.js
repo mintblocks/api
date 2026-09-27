@@ -1,9 +1,9 @@
 const express = require('express');
-const path = require('path');
+const proxy = require('express-http-proxy');
 const app = express();
 const router = express.Router();
 
-router.use(express.json());
+app.use(express.json());
 
 router.get('/status', (req, res) => {
   res.json({
@@ -14,15 +14,11 @@ router.get('/status', (req, res) => {
 
 app.use('/api', router);
 
-const STATIC_DIR = process.env.STATIC_DIR || path.join(__dirname, 'projects');
-app.use('/projects', express.static(STATIC_DIR));
+app.use('/projects', proxy('http://localhost:4321'));
 
-app.get('/projects/*', (req, res) => {
-  res.sendFile(path.join(STATIC_DIR, 'index.html'));
-});
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, '404.html'));
+  res.status(404).json({ error: 'Not Found' });
 });
 
 const PORT = process.env.PORT || 1234;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`API Server running on port ${PORT}`));

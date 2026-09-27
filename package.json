@@ -16,6 +16,7 @@
   "homepage": "https://mb.jimhasaburger.com/",
   "dependencies": {
     "pm2": "latest",
-    "express": "latest"
+    "express": "latest",
+    "express-http-proxy": "latest"
   }
 }
